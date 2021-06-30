@@ -3,6 +3,7 @@ package com.linkbot
 import com.linkbot.model.Category
 import com.linkbot.model.Media
 import com.linkbot.util.Backup
+import com.linkbot.util.UserConfiguration
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Message
@@ -25,7 +26,7 @@ object LinkBot {
             val startTime = System.currentTimeMillis()
 
             log.warn("Initializing JDA...")
-            jda = JDABuilder.createDefault(Constants.TOKEN)
+            jda = JDABuilder.createDefault(UserConfiguration.INSTANCE.token.value)
                 .addEventListeners(CommandHandler)
                 .build().awaitReady()
 
@@ -76,9 +77,9 @@ object LinkBot {
     private fun parseMessages(after: Message? = null) {
         val messages =
             if (after != null)
-                jda.getTextChannelsByName(Constants.PASTE_CHANNEL, true).first().getHistoryAfter(after, 100)
+                jda.getTextChannelsByName(UserConfiguration.INSTANCE.pasteChannel.value, true).first().getHistoryAfter(after, 100)
             else
-                jda.getTextChannelsByName(Constants.PASTE_CHANNEL, true).first().getHistoryFromBeginning(100)
+                jda.getTextChannelsByName(UserConfiguration.INSTANCE.pasteChannel.value, true).first().getHistoryFromBeginning(100)
 
         var lastMessage: Message? = null
 
