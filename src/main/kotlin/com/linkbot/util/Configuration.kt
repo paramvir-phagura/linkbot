@@ -67,7 +67,7 @@ sealed class JsonConfiguration(fileName: String) : Configuration() {
 class UserConfiguration private constructor() : JsonConfiguration("app-preferences") {
 
     @Expose
-    val token = SimpleStringProperty(settings["theme"])
+    val token = SimpleStringProperty(settings["token"])
 
     @Expose
     val pasteChannel = SimpleStringProperty(settings["pasteChannel"] ?: "general")

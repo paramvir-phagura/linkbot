@@ -53,6 +53,7 @@ object LinkBot {
             log.info("Finished in ${TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - startTime)} seconds.")
         } catch (e: Exception) {
             log.error("Error starting!", e)
+            e.printStackTrace()
         }
     }
 
