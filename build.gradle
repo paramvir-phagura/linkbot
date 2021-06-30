@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'application'
+}
+
+group 'com.linkbot'
+version '1.0-SNAPSHOT'
+mainClassName = "com.linkbot.LinkBot"
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib'
+    implementation 'net.dv8tion:JDA:4.3.0_282'
+    runtimeOnly 'org.slf4j:slf4j-api:1.7.30'
+    runtimeOnly 'org.apache.logging.log4j:log4j-slf4j-impl:2.13.0'
+    runtimeOnly 'org.apache.logging.log4j:log4j-api:2.13.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.13.0'
+    implementation 'org.fusesource.jansi:jansi:1.16'
+}
